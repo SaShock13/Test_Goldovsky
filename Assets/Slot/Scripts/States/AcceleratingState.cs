@@ -11,6 +11,7 @@ public class AcceleratingState : FSMState
         Debug.Log("ENTER: ACCELERATING");
 
         Model.Set("IsStartEnabled", false);
+        Model.Set("SpinMode", "Accelerating"); 
     }
 
     [One(3f)]

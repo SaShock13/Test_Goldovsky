@@ -11,12 +11,17 @@ public class StoppingState : FSMState
         Debug.Log("ENTER: STOPPING");
 
         Model.Set("IsStopEnabled", false);
+        Model.EventManager.AddAction("OnSnaped", OnSnaped);
     }
 
-    [One(2f)]
-    void AfterDelay()
-    {
-        Debug.Log("Stopping → Idle");
+    //[One(2f)]
+    //void AfterDelay()
+    //{
+    //}
+   
+    void OnSnaped()
+    {        
+        Debug.Log("!!!!!!Stopping → Idle");
         Parent.Change("IdleState");
     }
 }

@@ -6,21 +6,19 @@ using UnityEngine;
 [State("SpinningState")]
 public class SpinningState : FSMState
 {
-    private SlotScroller scroller;
 
     [Enter]
     public void Enter()
     {
         Debug.Log("ENTER: SPINNING");
         Model.Set("IsStopEnabled", true);
-        scroller = GameObject.FindAnyObjectByType<SlotScroller>();
-        scroller.StartAccelerating(300f); // стартовая скорость
+        Model.Set("SpinMode", "Spinning");
     }
 
     [Bind("StopPressed")]
     void OnStopPressed()
     {
-        scroller.StopSlot();
+        Model.Set("SpinMode", "Stopping");
         Debug.Log("Spinning → Stopping");
         Parent.Change("StoppingState");
 

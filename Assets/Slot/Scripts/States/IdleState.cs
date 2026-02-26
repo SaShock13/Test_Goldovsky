@@ -11,6 +11,13 @@ public class IdleState : FSMState
     {
         Debug.Log("!!!!!!!!!!!!ENTER: IDLE");
         Debug.Log("FSM Model Hash: " + Model.GetHashCode());
+        Model.Set("SpinMode", "Idle");
+    }
+
+    [One(0.1f)]
+    void Delayed()
+    {
+
         Model.Set("IsStopEnabled", false);    
         Model.Set("IsStartEnabled", true);
     }
